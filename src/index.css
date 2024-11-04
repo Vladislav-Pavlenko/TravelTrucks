@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #101828;
+  background-color: #fff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,35 +13,50 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-p,
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
 }
 
-ul {
-  list-style: none;
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul,
+ol {
   margin: 0;
-  padding-left: 0;
+  padding: 0;
+  list-style: none;
 }
 
 a {
+  display: block;
+  color: currentColor;
   text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 img {
   display: block;
   max-width: 100%;
   height: auto;
-}
-label {
-  display: block;
-}
-
-svg {
-  display: block;
 }

@@ -1,0 +1,12 @@
+.header {
+  border-bottom: 1px solid #f2f4f7;
+  background: #f7f7f7;
+  padding: 28px 64px;
+  display: flex;
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  margin: 0 auto;
+}

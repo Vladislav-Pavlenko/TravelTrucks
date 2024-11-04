@@ -1,3 +1,3 @@
 export default function FiltersBar() {
-  return;
+  return <aside></aside>;
 }
