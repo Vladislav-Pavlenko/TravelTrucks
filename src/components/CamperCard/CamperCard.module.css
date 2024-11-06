@@ -1,0 +1,106 @@
+.img {
+  width: 292px;
+  object-fit: cover;
+  object-position: -250px;
+  border-radius: 10px;
+}
+.container {
+  max-width: 524px;
+}
+.title_container {
+  display: flex;
+  margin-bottom: 8px;
+}
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+}
+.price {
+  display: flex;
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  margin-right: 12px;
+}
+.like_button {
+}
+.like_icon {
+}
+
+.like_icon_active {
+  fill: #e44848;
+}
+.info_container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.star_icon {
+  margin-right: 4px;
+}
+.rating {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration-line: underline;
+  margin-right: 16px;
+}
+.map_icon {
+  margin-right: 4px;
+}
+.location {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.description {
+  color: #475467;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  width: 525px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 24px;
+}
+.list {
+  display: flex;
+  max-width: 524px;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.item {
+  padding: 12px 18px;
+  border-radius: 100px;
+  background: #f2f4f7;
+  display: flex;
+  gap: 8px;
+}
+.item_icon {
+}
+.more_btn {
+  border-radius: 200px;
+  background-color: #e44848;
+  width: 166px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  transition: all 250ms ease-in-out;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #d84343;
+  }
+}

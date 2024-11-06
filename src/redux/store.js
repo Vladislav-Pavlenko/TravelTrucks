@@ -1,5 +1,35 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit";
+import campersReducer from "./campers/slice.js";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-export default configureStore({
-  reducer: {}
-})
+const persistedCampersReducer = persistReducer(
+  {
+    key: "campers-favorites",
+    storage,
+    whitelist: ["favorites"],
+  },
+
+  campersReducer
+);
+
+export const store = configureStore({
+  reducer: { campers: persistedCampersReducer },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);
