@@ -1,0 +1,59 @@
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  margin-bottom: 8px;
+}
+.info_container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.star_icon {
+  margin-right: 4px;
+  fill: #ffc531;
+}
+.rating {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration-line: underline;
+  margin-right: 16px;
+}
+.map_icon {
+  margin-right: 4px;
+}
+.location {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  margin-bottom: 28px;
+}
+
+.list {
+  height: 312px;
+  display: flex;
+  gap: 48px;
+  margin-bottom: 28px;
+}
+
+.img {
+  width: 292px;
+  height: 312px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+.description {
+  color: #475467;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}

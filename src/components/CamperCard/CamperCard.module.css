@@ -1,7 +1,7 @@
 .img {
   width: 292px;
   object-fit: cover;
-  object-position: -250px;
+  object-position: center;
   border-radius: 10px;
 }
 .container {
@@ -39,6 +39,7 @@
 }
 .star_icon {
   margin-right: 4px;
+  fill: #ffc531;
 }
 .rating {
   font-size: 16px;
@@ -73,15 +74,7 @@
   gap: 8px;
   margin-bottom: 24px;
 }
-.item {
-  padding: 12px 18px;
-  border-radius: 100px;
-  background: #f2f4f7;
-  display: flex;
-  gap: 8px;
-}
-.item_icon {
-}
+
 .more_btn {
   border-radius: 200px;
   background-color: #e44848;

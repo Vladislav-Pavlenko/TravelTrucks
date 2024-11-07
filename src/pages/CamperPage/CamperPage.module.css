@@ -1,0 +1,51 @@
+.container {
+  padding: 48px 64px;
+}
+
+.camper_info {
+  margin-bottom: 60px;
+}
+
+.nav {
+  position: relative;
+  margin-bottom: 68px;
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #dadde1;
+    left: 0;
+    top: 44px;
+  }
+}
+.list {
+  display: flex;
+  gap: 40px;
+}
+
+.item_active {
+  position: relative;
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 5px;
+    background-color: #e44848;
+    left: 0;
+    top: 42px;
+    z-index: 10;
+  }
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.tab_container {
+  display: flex;
+  gap: 40px;
+}

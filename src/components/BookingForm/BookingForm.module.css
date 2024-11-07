@@ -1,0 +1,78 @@
+.section {
+  padding: 44px;
+  border-radius: 10px;
+  border: 1px solid #dadde1;
+  width: 641px;
+}
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.description {
+  color: #6c717b;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+.input {
+  border-radius: 12px;
+  background-color: #f7f7f7;
+  border: none;
+  outline: none;
+  color: #101828;
+  padding: 18px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.textarea {
+  resize: none;
+  border-radius: 12px;
+  background-color: #f7f7f7;
+  border: none;
+  outline: none;
+  color: #101828;
+  padding: 18px;
+  margin-bottom: 10px;
+  height: 118px;
+  width: 100%;
+}
+.submit_btn {
+  display: flex;
+  border-radius: 200px;
+  background: #e44848;
+  width: 166px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  margin: 0 auto;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    background-color: #d84343;
+  }
+}
+
+.calendar {
+  position: absolute;
+  top: 190px;
+  right: -100px;
+}

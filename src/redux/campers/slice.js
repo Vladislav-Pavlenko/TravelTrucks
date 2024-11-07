@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./operations.js";
+import { fetchCamperById, fetchCampers } from "./operations.js";
 import toast from "react-hot-toast";
 const campersReducer = createSlice({
   name: "campers",
@@ -26,15 +26,29 @@ const campersReducer = createSlice({
         state.isLoading = true;
         state.error = null;
       })
+      .addCase(fetchCamperById.pending, (state) => {
+        state.vehicle = [];
+        state.isLoading = true;
+        state.error = null;
+      })
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.vehicle = action.payload.items;
         state.total = action.payload.total;
       })
+      .addCase(fetchCamperById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.vehicle = [action.payload];
+      })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.total = 0;
+        toast.error(action.payload);
+      })
+      .addCase(fetchCamperById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
         toast.error(action.payload);
       });
   },
