@@ -1,16 +1,18 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import icons from "../../images/icons.svg";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import styles from "./FiltersBar.module.css";
 import clsx from "clsx";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { fetchCampers } from "../../redux/campers/operations.js";
 import { changeFilter } from "../../redux/campers/slice.js";
+import { useSearchParams } from "react-router-dom";
 export default function FiltersBar({ setPage }) {
   const [inputValue, setInputValue] = useState("");
   const locationId = useId();
   const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
   const handleSubmit = async (values) => {
     const params = {};
     values.location && (params["location"] = values.location);
@@ -28,14 +30,41 @@ export default function FiltersBar({ setPage }) {
     values.equipment.includes("automatic") &&
       (params["transmission"] = "automatic");
     values.type && (params["form"] = values.type);
+    setSearchParams(params);
     await dispatch(fetchCampers({ page: 1, ...params }));
     dispatch(changeFilter(params));
     setPage(2);
   };
+
   const handleInputChange = (e, setFieldValue) => {
     setInputValue(e.target.value);
-    setFieldValue(e.target.value);
+    setFieldValue("location", e.target.value);
   };
+
+  useEffect(() => {
+    const initialValues = {
+      location: searchParams.get("location") || "",
+      equipment: [
+        ...(searchParams.get("AC") === "true" ? ["ac"] : []),
+        ...(searchParams.get("kitchen") === "true" ? ["kitchen"] : []),
+        ...(searchParams.get("TV") === "true" ? ["tv"] : []),
+        ...(searchParams.get("bathroom") === "true" ? ["bathroom"] : []),
+        ...(searchParams.get("radio") === "true" ? ["radio"] : []),
+        ...(searchParams.get("microwave") === "true" ? ["microwave"] : []),
+        ...(searchParams.get("gas") === "true" ? ["gas"] : []),
+        ...(searchParams.get("water") === "true" ? ["water"] : []),
+        ...(searchParams.get("refrigerator") === "true"
+          ? ["refrigerator"]
+          : []),
+        ...(searchParams.get("engine") === "petrol" ? ["petrol"] : []),
+        ...(searchParams.get("transmission") === "automatic"
+          ? ["automatic"]
+          : []),
+      ],
+      type: searchParams.get("form") || "",
+    };
+    setInputValue(initialValues.location || "");
+  }, [searchParams]);
 
   const filtersValidationSchema = Yup.object().shape({
     location: Yup.string("String")
@@ -50,7 +79,27 @@ export default function FiltersBar({ setPage }) {
   return (
     <aside className={styles.aside}>
       <Formik
-        initialValues={{ location: "", equipment: [], type: "" }}
+        initialValues={{
+          location: searchParams.get("location") || "",
+          equipment: [
+            ...(searchParams.get("AC") === "true" ? ["ac"] : []),
+            ...(searchParams.get("kitchen") === "true" ? ["kitchen"] : []),
+            ...(searchParams.get("TV") === "true" ? ["tv"] : []),
+            ...(searchParams.get("bathroom") === "true" ? ["bathroom"] : []),
+            ...(searchParams.get("radio") === "true" ? ["radio"] : []),
+            ...(searchParams.get("microwave") === "true" ? ["microwave"] : []),
+            ...(searchParams.get("gas") === "true" ? ["gas"] : []),
+            ...(searchParams.get("water") === "true" ? ["water"] : []),
+            ...(searchParams.get("refrigerator") === "true"
+              ? ["refrigerator"]
+              : []),
+            ...(searchParams.get("engine") === "petrol" ? ["petrol"] : []),
+            ...(searchParams.get("transmission") === "automatic"
+              ? ["automatic"]
+              : []),
+          ],
+          type: searchParams.get("form") || "",
+        }}
         validationSchema={filtersValidationSchema}
         onSubmit={handleSubmit}
       >

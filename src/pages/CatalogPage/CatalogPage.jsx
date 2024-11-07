@@ -13,19 +13,25 @@ import {
 import DocumentTitle from "../../components/DocumentTitle.jsx";
 import Loader from "../../components/Loader.jsx";
 import { Toaster } from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 export default function CatalogPage() {
   const [page, setPage] = useState(2);
+  const [searchParams] = useSearchParams();
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
   const totalCampers = useSelector(selectTotalCampers);
   const dispatch = useDispatch();
   const params = useSelector(selectFilters);
+
   useEffect(() => {
+    const initialFilters = {
+      ...Object.fromEntries(searchParams.entries()),
+    };
     const fetchData = async () => {
-      await dispatch(fetchCampers({ page: 1 }));
+      await dispatch(fetchCampers({ page: 1, ...initialFilters }));
     };
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, searchParams]);
 
   const handleClick = async () => {
     setPage((prevState) => prevState + 1);
